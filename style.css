@@ -1,20 +1,35 @@
+/* git remote add origin https://github.com/rashilmaharjan/Portfolio-projects.git
+git branch -M main
+git push -u origin main */
+
 :root {
   --body-bg: lightblue;
+  --dark-bg: var(--color-dark);
+  --border-color: var(--color-dark);
   --color-orange: orangered;
   --color-dark: #2a2a2a;
-  --text-color: var(--color-dark);
-}
 
+  --text-color: var(--color-dark);
+  --dark-text-color: white;
+  --dark-border-color: white;
+
+  --shadow: 4px -2px 40px 9px rgb(29, 20, 20);
+}
+html {
+  scroll-behavior: smooth;
+}
 * {
   box-sizing: border-box;
 }
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 .container {
   width: 80%;
   margin: auto;
+  max-width: 1400px;
 }
 
 .flex {
@@ -40,14 +55,33 @@ a {
   font-weight: 400;
   font-style: normal;
 }
+.title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.title span {
+  border-bottom: 3px solid var(--color-orange);
+}
 .wrapper {
   background: var(--body-bg);
   min-height: 100vh;
 }
 
 /* <!-- dar mode toggler --> */
+[for="darkmode"] {
+  position: fixed;
+  top: 7rem;
+  left: 3rem;
+}
+
+[for="darkmode"]:hover {
+  cursor: pointer;
+  transform: scale(1.3);
+  transition: all 0.3s;
+}
 
 /* <!-- navbar --> */
+
 header {
   box-shadow: 4px -2px 40px 9px rgb(29, 20, 20);
   position: sticky;
@@ -87,18 +121,300 @@ header .header {
 }
 .navigation li:hover {
   color: var(--color-orange);
+  transition: all 0.3s;
+}
+
+/* applying dark mode feature/ adjection selector */
+#darkmode:checked + .wrapper {
+  background: var(--dark-bg);
+  color: var(--dark-text-color);
+  --border-color: var(--dark-border-color);
+}
+#darkmode {
+  display: none;
 }
 
 /* <!-- hero sec --> */
 
+.hero-section {
+  margin-top: 5rem;
+  max-height: 60vh;
+  padding-top: 3rem;
+}
+.hero {
+  background-color: var(--color-orange);
+  grid-template-areas: "left right";
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.left {
+  grid-area: left;
+  flex-direction: column;
+  margin-left: 10vw;
+  justify-content: center;
+}
+.left div span {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.left .tag {
+  font-size: 2.2rem;
+  font-weight: bolder;
+  letter-spacing: 5px;
+}
+.left button {
+  background: var(--dark-bg);
+  color: var(--dark-text-color);
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.right {
+  grid-area: right;
+  justify-content: flex-end;
+  align-items: left;
+  margin-top: -7rem;
+}
+.right img {
+  height: 90%;
+}
+
 /* <!-- banner --> */
+.banner {
+  margin-top: 7rem;
+  border: 2px solid var(--border-color);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  border-radius: 50px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.info-content .icon-container {
+  background: var(--color-orange);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  color: white;
+}
+.info-content div span {
+  font-weight: bolder;
+  font-size: 1.3rem;
+  letter-spacing: 5px;
+}
+.info-content div p {
+  color: var(--color-orange);
+}
+
+.info-divider {
+  background: grey;
+  width: 2px;
+  height: 70px;
+}
 
 /* <!-- skills --> */
+.skills {
+  margin-top: 5rem;
+}
+.skills-container {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.skills-container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.skills-container > div i {
+  font-size: 3rem;
+}
 
 /* <!-- projects --> */
 
 /* <!-- about me --> */
+.About {
+  margin-top: 5rem;
+  background: rgb(184, 236, 184);
+  padding: 7rem 0;
+}
+.About .myimg {
+  width: 40%;
+}
+
+.About .my-bio h2 {
+  letter-spacing: 5px;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+.About .my-bio p:nth-child(4),
+.my-bio .tag {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.my-bio .tag + div > span {
+  padding: 0.8rem 1.2rem;
+  border-radius: 5px;
+}
+.my-bio .tag + div > span:hover {
+  background: grey;
+  cursor: pointer;
+  transform: scale(1.3);
+  transition: all 0.5;
+}
+/* projects */
+.projects {
+  margin-top: 5rem;
+}
+
+.projects .project-container {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.projects .project-card {
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+}
+.project-card .links {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
 
 /* <!-- contact --> */
+.contact {
+  padding-top: 7rem 0;
+  width: 400px;
+  margin: auto;
+  margin-top: 5rem;
+}
+.contact .social {
+  font-size: 4rem;
+  justify-content: center;
+}
+.contact h3 {
+  text-align: center;
+  padding: 3rem 0;
+}
+.contact .email-section {
+  background: black;
 
+  padding: 1rem 2rem;
+  border-radius: 40px;
+  font-size: 2rem;
+  gap: 3rem;
+  box-shadow: var(--shadow);
+}
+.contact .email-section span {
+  font-size: 1.5rem;
+}
+.contact .email-icon {
+  background-color: var(--color-orange);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
 /* <!-- footer --> */
+footer {
+  min-height: 30vh;
+  background: #000;
+  color: white;
+  margin-top: 5rem;
+  flex-direction: column;
+}
+
+footer .top {
+  margin-bottom: 5rem;
+}
+footer .top ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+footer .top ul {
+  line-height: 1.5rem;
+}
+
+/* goup */
+.goup {
+  font-size: 3rem;
+  background: var(--color-orange);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+
+  position: fixed;
+  right: 20px;
+  bottom: 50px;
+}
+#hamburgermenu {
+  display: none;
+}
+[for="hamburgermenu"] {
+  display: none;
+}
+
+/* media query */
+@media (max-width: 768px) {
+  [for="hamburgermenu"] {
+    cursor: pointer;
+    display: block;
+  }
+
+  .menu {
+    position: absolute;
+    background: var(--body-bg);
+    width: 250px;
+    height: 100vh;
+    top: 3.7rem;
+    box-shadow: var(--shadow);
+    left: 100vw;
+    transition: all 0.5s;
+  }
+  .menu .navigation {
+    flex-direction: column;
+    font-size: 1.3rem;
+  }
+
+  .menu .navigation li {
+    line-height: 2.5rem;
+  }
+  #hamburgermenu:checked + .menu {
+    left: calc(100vw - 250px);
+  }
+  /* hero */
+  .hero {
+    grid-template-areas:
+      "left"
+      "right";
+  }
+  .hero .right {
+    justify-content: center;
+    align-items: center;
+  }
+  .hero .right img {
+    width: 80%;
+  }
+  /* banner */
+  .banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .info-divider {
+    display: none;
+  }
+  /* projectss */
+  .projects .project-container {
+    grid-template-columns: 1fr;
+  }
+  /* about */
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .About .myImg {
+    width: 100%;
+  }
+}
